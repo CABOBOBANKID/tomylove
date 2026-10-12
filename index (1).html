@@ -1,0 +1,677 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#160b19">
+
+  <title>For My Disturber ❤️</title>
+
+  <style>
+    :root {
+      --bg: #100914;
+      --panel: #211329;
+      --pink: #ff82b2;
+      --rose: #ffc3d9;
+      --gold: #ffe0a3;
+      --white: #fff5fa;
+      --muted: #d6bdcf;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--white);
+      background:
+        radial-gradient(ellipse at top, #49203d 0%, transparent 48%),
+        linear-gradient(180deg, #100914, #1c1024 55%, #100914);
+      font-family: Georgia, "Times New Roman", serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 6%;
+      background: rgba(16, 9, 20, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 130, 178, 0.18);
+    }
+
+    .brand {
+      color: var(--rose);
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .music-button,
+    .main-button {
+      border: 1px solid rgba(255, 195, 217, 0.4);
+      border-radius: 999px;
+      padding: 11px 17px;
+      color: white;
+      background: linear-gradient(135deg, #b73570, #71345f);
+      cursor: pointer;
+      transition: transform 0.2s, filter 0.2s;
+    }
+
+    .music-button:hover,
+    .main-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.15);
+    }
+
+    .hero {
+      min-height: 86vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 75px 20px;
+      position: relative;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 20px auto;
+      font-size: clamp(2.6rem, 8vw, 6rem);
+      line-height: 1.06;
+      font-weight: normal;
+      color: var(--rose);
+      text-shadow: 0 0 35px rgba(255, 130, 178, 0.25);
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.8vw, 1.25rem);
+      line-height: 1.8;
+    }
+
+    .hero-heart {
+      font-size: 3rem;
+      margin: 12px;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.14); }
+    }
+
+    section {
+      padding: 65px 20px;
+    }
+
+    .section-title {
+      color: var(--rose);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: normal;
+      margin: 0 0 15px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 35px;
+      line-height: 1.8;
+    }
+
+    .letter {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: clamp(25px, 5vw, 50px);
+      border: 1px solid rgba(255, 195, 217, 0.22);
+      border-radius: 24px;
+      background: rgba(45, 24, 49, 0.72);
+      box-shadow: 0 15px 55px rgba(0, 0, 0, 0.2);
+      color: #f9eaf3;
+      text-align: left;
+      font-size: 1.08rem;
+      line-height: 2;
+    }
+
+    .letter-signature {
+      text-align: right;
+      color: var(--rose);
+      margin-top: 25px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      max-width: 1050px;
+      margin: 35px auto 0;
+    }
+
+    .memory-card {
+      overflow: hidden;
+      background: rgba(45, 24, 49, 0.8);
+      border: 1px solid rgba(255, 195, 217, 0.18);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .memory-card img {
+      display: block;
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      background: #302035;
+      color: var(--rose);
+    }
+
+    .memory-caption {
+      padding: 16px 12px 20px;
+      color: var(--rose);
+      line-height: 1.6;
+    }
+
+    .video-wrap {
+      max-width: 850px;
+      margin: 30px auto 0;
+      padding: 12px;
+      background: rgba(45, 24, 49, 0.75);
+      border: 1px solid rgba(255, 195, 217, 0.2);
+      border-radius: 22px;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      max-height: 500px;
+      border-radius: 14px;
+      background: #09060a;
+    }
+
+    .promise {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 2;
+    }
+
+    .final-message {
+      padding: 90px 20px 100px;
+      background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(122, 35, 84, 0.22),
+        transparent
+      );
+    }
+
+    .final-message h2 {
+      color: var(--rose);
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      font-weight: normal;
+      margin: 15px 0;
+    }
+
+    .footer {
+      padding: 25px 15px;
+      color: #bca4b7;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 195, 217, 0.12);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    #surprise {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(12, 5, 15, 0.96);
+      transition: opacity 0.5s;
+    }
+
+    .surprise-box {
+      width: 100%;
+      max-width: 550px;
+      padding: 38px 24px;
+      border: 1px solid rgba(255, 195, 217, 0.35);
+      border-radius: 25px;
+      background: linear-gradient(145deg, #32172e, #170d20);
+      box-shadow: 0 0 65px rgba(255, 95, 160, 0.15);
+    }
+
+    .surprise-box h2 {
+      color: var(--rose);
+      font-size: clamp(2rem, 7vw, 3.6rem);
+      font-weight: normal;
+    }
+
+    .surprise-box p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -35px;
+      z-index: 50;
+      pointer-events: none;
+      animation: float-up 6s linear forwards;
+    }
+
+    @keyframes float-up {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      15% { opacity: 0.8; }
+      to {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+      }
+    }
+
+    .main-button:focus-visible,
+    .music-button:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 720px) {
+      .gallery {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+      }
+
+      .memory-card img {
+        height: 320px;
+      }
+
+      .topbar {
+        padding: 12px 4%;
+      }
+
+      .brand {
+        font-size: 0.88rem;
+      }
+
+      .music-button {
+        padding: 9px 12px;
+        font-size: 0.85rem;
+      }
+
+      section {
+        padding: 50px 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    section {
+  scroll-margin-top: 84px;
+}
+
+.memory-card img {
+  object-position: center top;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  max-height: 420px;
+}
+
+.hero {
+  padding-top: 110px;
+}
+
+@media (max-width: 720px) {
+  section {
+    scroll-margin-top: 72px;
+  }
+
+  .memory-card img {
+    height: auto;
+    max-height: 440px;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <div id="surprise">
+    <div class="surprise-box">
+      <div class="hero-heart">💗</div>
+      <p class="eyebrow">A little surprise made with love</p>
+      <h2>For my Disturber 🥰</h2>
+      <p>
+        My love, I made something special just for you.
+        Take a deep breath, smile for me, and open your birthday surprise.
+      </p>
+      <button class="main-button" id="openSurprise">
+        Open your surprise ❤️
+      </button>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">For My Disturber ❤️</div>
+    <button class="music-button" id="musicButton" aria-pressed="false">
+      ♫ Play our song
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Today is all about you</p>
+      <div class="hero-heart">❤️</div>
+      <h1>Happy Birthday,<br>My Love</h1>
+      <p>
+        To my beautiful Disturber, my happiness, my favourite person,
+        and the one who makes my world feel a little more magical.
+      </p>
+      <button class="main-button" id="readLetter">
+        Read my heart 💌
+      </button>
+    </section>
+
+    <section id="letterSection">
+      <h2 class="section-title">A letter from my heart</h2>
+      <p class="section-intro">
+        Some feelings are too special to leave unsaid.
+      </p>
+
+      <article class="letter">
+        <p>My sweetest Disturber ❤️🥰,</p>
+
+        <p>
+          Happy birthday to the woman who brings so much happiness into
+          my life. Today is more than just your birthday to me. It is a
+          reminder of how lucky I feel to know you, to love you, and to
+          share beautiful moments with you.
+        </p>
+
+        <p>
+          Your smile is special to me. Your presence makes ordinary
+          moments memorable, and even your little ways of disturbing me
+          have become things I cherish. You have a place in my heart
+          that nobody else could ever fill.
+        </p>
+
+        <p>
+          On your special day, I wish you peace, good health, genuine
+          happiness, success, and beautiful opportunities. May this
+          new chapter bring you closer to every dream you hold dear.
+          I hope you always remember how valuable, beautiful, and loved
+          you are.
+        </p>
+
+        <p>
+          I may not always have the perfect words or the perfect gifts,
+          but I want you to know that the love behind this little
+          surprise is real. I made this page especially for you because
+          you deserve to feel celebrated.
+        </p>
+
+        <p>
+          Keep smiling, keep shining, and keep being the wonderful
+          person you are. Today, tomorrow, and in all the little
+          moments in between, I am grateful for you.
+        </p>
+
+        <p>Happy birthday, my love. You mean so much to me. 💖</p>
+
+        <div class="letter-signature">
+          Forever sending you love,<br>
+          <strong>My LOML 🥰❤️</strong>
+        </div>
+      </article>
+    </section>
+
+    <section id="memories">
+      <h2 class="section-title">Our little memories 📸</h2>
+      <p class="section-intro">
+        Every picture tells a story, and every memory with you is
+        something worth keeping close.
+      </p>
+
+      <div class="gallery">
+        <article class="memory-card">
+          <img
+            src="./media/firstday.jpg"
+            alt="A memory from the first day"
+            loading="lazy"
+          >
+          <div class="memory-caption">
+            The beginning of something beautiful ❤️
+          </div>
+        </article>
+
+        <article class="memory-card">
+          <img
+            src="./media/quiet.jpg"
+            alt="One of our quiet and special moments"
+            loading="lazy"
+          >
+          <div class="memory-caption">
+            The little moments I treasure 🥹
+          </div>
+        </article>
+
+        <article class="memory-card">
+          <img
+            src="./media/blue.jpg"
+            alt="Another favourite memory together"
+            loading="lazy"
+          >
+          <div class="memory-caption">
+            A memory that makes me smile 💕
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="videoSection">
+      <h2 class="section-title">A moment with you 🎬</h2>
+      <p class="section-intro">
+        Press play and relive a little memory.
+      </p>
+
+      <div class="video-wrap">
+        <video
+          id="memoryVideo"
+          controls
+          playsinline
+          preload="metadata"
+          poster="./media/poster.jpg"
+        >
+          <source src="./media/moment.mp4" type="video/mp4">
+          Sorry, your browser does not support this video.
+        </video>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">My birthday wishes for you ✨</h2>
+      <p class="promise">
+        I wish you a heart that stays hopeful, a mind that finds peace,
+        people who treat you with kindness, courage for every challenge,
+        and countless reasons to laugh. May your hard work bring you
+        success and your life be filled with love that feels safe,
+        sincere, and beautiful.
+      </p>
+
+      <div style="margin-top: 28px;">
+        <img
+          src="./media/portrait.jpg"
+          alt="A beautiful portrait of my love"
+          loading="lazy"
+          style="
+            width: min(100%, 350px);
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 22px;
+            border: 1px solid rgba(255,195,217,.35);
+            box-shadow: 0 15px 45px rgba(0,0,0,.3);
+          "
+        >
+      </div>
+    </section>
+
+    <section class="final-message">
+      <p class="eyebrow">One last thing, my love</p>
+      <h2>You are so loved. ❤️</h2>
+      <p class="section-intro">
+        Happy birthday, my Disturber. Thank you for being you.
+        Here is to more laughter, more memories, and more beautiful days.
+      </p>
+      <button class="main-button" id="loveButton">
+        Send you a thousand hearts 💗
+      </button>
+      <p id="loveMessage" style="color: var(--rose); margin-top: 25px;"></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Made with love, especially for you ❤️
+  </footer>
+
+  <script>
+    "use strict";
+
+    const surprise = document.getElementById("surprise");
+    const openSurprise = document.getElementById("openSurprise");
+    const musicButton = document.getElementById("musicButton");
+    const readLetter = document.getElementById("readLetter");
+    const loveButton = document.getElementById("loveButton");
+    const loveMessage = document.getElementById("loveMessage");
+    const memoryVideo = document.getElementById("memoryVideo");
+
+    // Keep the music file in the media folder.
+    const song = new Audio("./media/song.mp3");
+    song.loop = true;
+    song.preload = "none";
+
+    openSurprise.addEventListener("click", () => {
+      surprise.classList.add("hidden");
+      createHearts(18);
+    });
+
+    readLetter.addEventListener("click", () => {
+      document.getElementById("letterSection").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+
+    musicButton.addEventListener("click", async () => {
+      if (song.paused) {
+        try {
+          await song.play();
+          musicButton.textContent = "♫ Pause our song";
+          musicButton.setAttribute("aria-pressed", "true");
+        } catch (error) {
+          musicButton.textContent = "Song unavailable — check media/";
+          console.error("Could not play song:", error);
+        }
+      } else {
+        song.pause();
+        musicButton.textContent = "♫ Play our song";
+        musicButton.setAttribute("aria-pressed", "false");
+      }
+    });
+
+    loveButton.addEventListener("click", () => {
+      loveMessage.textContent =
+        "❤️ I love you, my Disturber! ❤️ You deserve all the happiness in the world.";
+      createHearts(45);
+    });
+
+    function createHearts(amount) {
+      const symbols = ["❤️", "💗", "💕", "💖", "💘", "✨"];
+
+      for (let i = 0; i < amount; i++) {
+        const heart = document.createElement("span");
+
+        heart.className = "heart";
+        heart.textContent =
+          symbols[Math.floor(Math.random() * symbols.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (16 + Math.random() * 22) + "px";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        heart.addEventListener("animationend", () => {
+          heart.remove();
+        });
+      }
+    }
+
+    // Report missing files clearly in the browser console.
+    document.querySelectorAll("img").forEach((image) => {
+      image.addEventListener("error", () => {
+        console.error(
+          "Image not found:",
+          image.getAttribute("src"),
+          "Check the media folder and exact filename."
+        );
+        image.style.border = "2px dashed #ff82b2";
+        image.alt = "Image not found — check its filename and folder";
+      });
+    });
+
+    memoryVideo.addEventListener("error", () => {
+      console.error(
+        "Video could not load. Check that media/moment.mp4 exists."
+      );
+    });
+
+    song.addEventListener("error", () => {
+      console.error(
+        "Song could not load. Check that media/song.mp3 exists."
+      );
+    });
+
+    // Optional testing shortcut:
+    // Add #preview to the website URL to skip the opening screen.
+    if (window.location.hash === "#preview") {
+      surprise.classList.add("hidden");
+    }
+  </script>
+</body>
+</html>
+```
